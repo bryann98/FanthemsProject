@@ -92,3 +92,15 @@ with open(listpath, 'wb') as f:
 
 # # disconnect from server
 # sql_db.close()
+
+import glob
+import os
+import datetime
+from datetime import datetime, timedelta
+currDate = datetime.today()
+currSec = currDate.timestamp() # Convert current time to seconds
+for file_name in glob.glob(os.path.join(dirpath, '*.csv')):
+    fileSec = os.path.getmtime(file_name)
+    diffTime = currSec - fileSec
+    if diffTime <= 86400:
+        print(file_name)
