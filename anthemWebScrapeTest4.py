@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Oct 12 12:13:34 2021
-
-@author: thela
-"""
 # import bs4
 import zipfile
 import requests
