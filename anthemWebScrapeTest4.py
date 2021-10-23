@@ -11,8 +11,8 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 # Create directories for storage
-dirpath = r'C:\Users\thela\Downloads\AntWebScrape' # Change to desired directory
-listpath = r'C:\Users\thela\Downloads\curr_list.txt' # List of links
+dirpath = r'directory path' # Change to desired directory
+listpath = r'txt file path' # List of links
 if not os.path.exists(dirpath): # If directory does not exist yet, make it
     os.makedirs(dirpath)
 
