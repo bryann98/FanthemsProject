@@ -53,54 +53,55 @@ new_List = zipLinks
 with open(listpath, 'wb') as f:
     pickle.dump(new_List, f)
 
-# # Open database connection with MySQL Database
-# import MySQLdb
-# import pymysql
-# h = config.get('mysql','host')
-# u = config.get('mysql','user')
-# pt = config.get('mysql', 'port')
-# pw = config.get('mysql','password')
-# db = config.get('mysql','db')
-# sql_db = MySQLdb.connect(h,pt,u,pw,db)
+    
 
-# cursor = sql_db.cursor()
-# cursor.execute("DROP TABLE IF EXISTS")
-# sql = """LOAD DATA LOCAL INFILE '{}'
-# INTO TABLE system_work
-# FIELDS TERMINATED BY ','
-# OPTIONALLY ENCLOSED BY '"'
-# LINES TERMINATED BY '\\r\\n'
-# IGNORE 1 LINES;;"""
+# Open database connection
+import pymysql
+host = 'host'
+user = 'user'
+password = 'pw'
+port = 'port'
+database = 'database-1'
+sql_db = pymysql.connect(host, port, user, password, database)
 
-# currFiles = os.listdir(dirpath)
-# import fnmatch
-# for file_name in currFiles:
-#     if fnmatch.fnmatch(file_name, '*puf*'):
-#         try:
-#             cursor = sql_db.cursor()
-#             cursor.execute(sql.format(file_name))
-#             sql_db.commit()
-#         except Exception:
-#             # Rollback in case there is any error
-#             sql_db.rollback()
-#         try:
-#             # Execute the SQL command and commit your changes in the database
-#             cursor.execute(sql)
-#             sql_db.commit()
-#         except:
-#             sql_db.rollback()
-
-# # disconnect from server
-# sql_db.close()
+cursor = sql_db.cursor()
+# Query to load csv files
+dataL = """LOAD DATA LOCAL INFILE '{}'
+INTO TABLE system_work
+FIELDS TERMINATED BY ','
+OPTIONALLY ENCLOSED BY '"'
+LINES TERMINATED BY '\\r\\n';;""" 
 
 import glob
 import os
 import datetime
+import fnmatch
 from datetime import datetime, timedelta
-currDate = datetime.today()
-currSec = currDate.timestamp() # Convert current time to seconds
+# Convert current time to seconds
+currDate = datetime.today() 
+currSec = currDate.timestamp()
+# For each csv file in directory containing raw data  
 for file_name in glob.glob(os.path.join(dirpath, '*.csv')):
-    fileSec = os.path.getmtime(file_name)
-    diffTime = currSec - fileSec
-    if diffTime <= 86400:
-        print(file_name)
+    if fnmatch.fnmatch(file_name, '*puf*') and not "repwgt" in file_name:
+        # Get time the file was modified
+        fileSec = os.path.getmtime(file_name)
+        diffTime = currSec - fileSec
+        # If file was modified within last 24 hours
+        if diffTime <= 86400:
+            print(file_name)
+            # Try to add the data into the database
+            try:
+                cursor.execute(dataL.format(file_name))
+                sql_db.commit()
+            except Exception:
+                # Rollback in case there is any error
+                sql_db.rollback()
+            try:
+                # Execute the SQL command and commit changes to database
+                cursor.execute(dataL)
+                sql_db.commit()
+            except:
+                sql_db.rollback()
+                       
+# Disconnect from database
+sql_db.close()
