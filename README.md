@@ -30,4 +30,6 @@ Anthem Blue Cross Blue Shield (BCBS) is a well-established health insurance comp
 - Data used for dashboard and dashboard file (.twb and .twbx) found here:
 https://drive.google.com/drive/folders/1DGb78XlECy5x6N0sANHbi0xpVVASgtTV?usp=sharing
 
+## Updating Database
+- Instructions are contained in Update_Data.ipynb
 
