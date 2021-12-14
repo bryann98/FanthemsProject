@@ -17,7 +17,11 @@ The web scraping script used is webscraping.py
 ### Step 8: Use Python to connect to DB and get the data 
 ### Step 9: Save dataset into a csv file
 ### Step 10: Subset the data, rename entries and save the new dataset to a csv file
-Subseting the data is done using subset_data.ipynb. Renaming the entries is done using rename_entries.ipynb. The state mapping file used in the renaming step is state_map.csv
+- Subseting the data is done using subset_data.ipynb
+- Renaming the entries is done using rename_entries.ipynb
+- The state mapping file used in the renaming step is state_map.csv
 ### Step 11: Upload that csv file to Tableau for visualizations
+- Data used for dashboard and dashboard file (.twb and .twbx) found here:
+https://drive.google.com/drive/folders/1DGb78XlECy5x6N0sANHbi0xpVVASgtTV?usp=sharing
 
 
