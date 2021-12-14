@@ -7,7 +7,7 @@ Anthem Blue Cross Blue Shield (BCBS) is a well-established health insurance comp
 
 ## Step by step process to begin working with data
 ### Step 1: Run web scrape script to get files into local directory
-- The web scraping script used is webscraping.py
+- The web scraping script used is anthemWebScrapeTest4.py
 ### Step 2: Create an AWS RDS Database
 - More details on Create DB.ipynb 
 ### Step 3: Combine all CSV Files into a single csv file
