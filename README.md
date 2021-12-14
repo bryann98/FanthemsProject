@@ -5,7 +5,7 @@
 ## Summary
 Anthem Blue Cross Blue Shield (BCBS) is a well-established health insurance company that covers millions of customers in 14 states. They would like to know the trends and patterns that have arisen over the last year due to the COVID-19 pandemic. Our team extracted the data from the Census Bureau using a web scraping script developed in Python and a relational database using AWS Relational Database Service (RDS) that automatically updates as new data is released. The data consists of approximately 2.5 million entries with 40 surveys conducted since the beginning of the pandemic, with new variables updated or removed every few weeks based on relevancy.
 
-## Step by step process to begin working with data
+## Step by step process to begin working with the data
 ### Step 1: Run web scrape script to get files into local directory
 - The web scraping script used is anthemWebScrapeTest4.py
 ### Step 2: Create an AWS RDS Database
