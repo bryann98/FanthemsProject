@@ -7,12 +7,17 @@ Anthem Blue Cross Blue Shield (BCBS) is a well-established health insurance comp
 
 ## Step by step process
 ### Step 1: Run web scrape script to get files into local directory
+The web scraping script used is webscraping.py
 ### Step 2: Create an AWS RDS Database
 ### Step 3: Combine all CSV Files into a single csv file
 ### Step 4: Download MySQL Workbench or some other MySQL Client
 ### Step 5: Use credentials and address to connect to AWS using new client
 ### Step 6: Create Table
 ### Step 7: Populate DB
-### Step 8: Use Python to connect to DB and select needed columns into a dataset
+### Step 8: Use Python to connect to DB and get the data 
 ### Step 9: Save dataset into a csv file
-### Step 10: Upload that csv file to Tableau for visualizations
+### Step 10: Subset the data, rename entries and save the new dataset to a csv file
+Subseting the data is done using subset_data.ipynb. Renaming the entries is done using rename_entries.ipynb. The state mapping file used in the renaming step is state_map.csv
+### Step 11: Upload that csv file to Tableau for visualizations
+
+
